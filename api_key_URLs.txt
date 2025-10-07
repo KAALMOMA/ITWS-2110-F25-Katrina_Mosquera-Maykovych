@@ -1,0 +1,4 @@
+To access OpenWeather API Key >> https://home.openweathermap.org/api_keys
+To access Unsplash API Key >> https://unsplash.com/oauth/applications/813490
+
+https://openweathermap.org/current
