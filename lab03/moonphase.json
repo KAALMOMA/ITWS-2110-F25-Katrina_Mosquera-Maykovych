@@ -1,0 +1,15 @@
+{
+  "queryCost": 1,
+  "latitude": 42.7278,
+  "longitude": -73.6874,
+  "resolvedAddress": "42.7278,-73.6874",
+  "address": "42.7278,-73.6874",
+  "timezone": "America/New_York",
+  "tzoffset": -4,
+  "days": [
+    {
+      "moonphase": 0.75
+    }
+  ],
+  "alerts": []
+}

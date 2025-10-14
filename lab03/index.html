@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Kat's Weather App</title>
+  <link rel="icon" type="image/x-icon" href="favicon.svg">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+  <div id="box"></div>
+
+  <h1>Kat's Weather App</h1>
+  
+  <h2>Troy, NY</h2>
+  <div class="horizontal">
+    <div class="card-wrapper"><h2>Weather</h2>
+      <div class="weather-card">
+        <div id="desc"></div>
+        <div id="weather-icon" style="font-size: 100px;">?</div>
+      </div>
+    </div>
+
+    <div class="card-wrapper"><h2>Wind</h2>
+      <div class="weather-card">
+        <div><span id="wind-speed"></span>mph <span id="wind-dir"></span></div>
+        <img id="wind-arrow" src="arrows/N.svg" height="100" style="padding: 25px;" alt="wind-dir-arrow">
+      </div>
+    </div>
+
+    <div class="card-wrapper"><h2>Temperature</h2>
+      <div class="weather-card" style="display: flex; justify-content: center; align-items: center;">
+        <div style="font-size: 50px;"><span id="temp">?</span>°F</div>
+      </div>
+    </div>
+
+    <div class="card-wrapper"><h2>Humidity</h2>
+      <div class="weather-card" style="display: flex; justify-content: center; align-items: center;">
+        <div style="font-size: 50px;"><span id="humidity">?</span>%</div>
+      </div>
+    </div>
+
+    <div class="card-wrapper"><h2>Moonphase</h2>
+      <div class="weather-card" style="display: flex; justify-content: center; align-items: center;">
+        <div id="moonphase-emoji" style="font-size: 100px;">?</div>
+      </div>
+    </div>
+
+  </div>
+
+
+  <script src="util2.js"></script>
+  <script>
+    document.addEventListener("weatherDataReady", (event) => {
+        const weather = event.detail;
+        console.log("Weather data received:", weather);
+        
+        const desc = document.getElementById("desc");
+        desc.textContent = capitalizeWords(JSON.stringify(weather.weather[0].description, null, 2).replace(/"/g, ""));
+       
+        const code = Number(JSON.stringify(weather.weather[0].id, null, 2).replace(/"/g, ""));
+
+        const weathericon = document.getElementById("weather-icon");
+        weathericon.textContent = getWeatherEmoji(code);
+
+        const temp = document.getElementById("temp");
+        temp.textContent = Math.round(Number(JSON.stringify(weather.main.temp, null, 2)));
+
+        const windspeed = document.getElementById("wind-speed");
+        windspeed.textContent = JSON.stringify(weather.wind.speed, null, 2);
+
+        const winddir = document.getElementById("wind-dir");
+        winddir.textContent = toCardinal(Number(JSON.stringify(weather.wind.deg, null, 2))); 
+
+        const windarrow = document.getElementById("wind-arrow");
+        windarrow.src = getWindArrow(toCardinal(Number(JSON.stringify(weather.wind.deg, null, 2))));
+
+        const humidity = document.getElementById("humidity");
+        humidity.textContent = JSON.stringify(weather.main.humidity, null, 2); 
+    });
+
+    document.addEventListener("moonphaseDataReady", (event) => {
+        const moonData = event.detail;
+        console.log("Moonphase data received:", moonData);
+
+        const moonphase = Number(JSON.stringify(moonData.days[0].moonphase, null, 2));
+        console.log("MOONPHASE >> "+moonphase);
+
+        const moonphaseemoji = document.getElementById("moonphase-emoji");
+        moonphaseemoji.textContent = getMoonPhaseEmoji(moonphase); 
+        
+    });
+
+    document.addEventListener("colorPaletteReady", (event) => {
+        const colorPalette = event.detail;
+        console.log("color palette received:", colorPalette);
+
+        const lighten = 50;
+        const c1_R = Math.min(Number(JSON.stringify(colorPalette.result[0][0], null, 2))+lighten,255);
+        const c1_G = Math.min(Number(JSON.stringify(colorPalette.result[0][1], null, 2))+lighten,255);
+        const c1_B = Math.min(Number(JSON.stringify(colorPalette.result[0][2], null, 2))+lighten,255);
+        const c2_R = Math.min(Number(JSON.stringify(colorPalette.result[1][0], null, 2))+lighten,255);
+        const c2_G = Math.min(Number(JSON.stringify(colorPalette.result[1][1], null, 2))+lighten,255);
+        const c2_B = Math.min(Number(JSON.stringify(colorPalette.result[1][2], null, 2))+lighten,255);
+        const c3_R = Math.min(Number(JSON.stringify(colorPalette.result[2][0], null, 2))+lighten,255);
+        const c3_G = Math.min(Number(JSON.stringify(colorPalette.result[2][1], null, 2))+lighten,255);
+        const c3_B = Math.min(Number(JSON.stringify(colorPalette.result[2][2], null, 2))+lighten,255);
+        const c4_R = Math.min(Number(JSON.stringify(colorPalette.result[3][0], null, 2))+lighten,255);
+        const c4_G = Math.min(Number(JSON.stringify(colorPalette.result[3][1], null, 2))+lighten,255);
+        const c4_B = Math.min(Number(JSON.stringify(colorPalette.result[3][2], null, 2))+lighten,255);
+      
+        let colorbg = new Color4Bg.BlurGradientBg({
+          dom: "box",
+          colors: [rgbToHex(c1_R,c1_G,c1_B),rgbToHex(c2_R,c2_G,c2_B),rgbToHex(c3_R,c3_G,c3_B),rgbToHex(c4_R,c4_G,c4_B)],
+          loop: true
+        })
+        
+    });
+</script>
+
+<script src="BlurGradientBg.min.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,48 @@
+{
+  "coord": {
+    "lon": -73.6874,
+    "lat": 42.7278
+  },
+  "weather": [
+    {
+      "id": 500,
+      "main": "Rain",
+      "description": "light rain",
+      "icon": "10d"
+    }
+  ],
+  "base": "stations",
+  "main": {
+    "temp": 53.31,
+    "feels_like": 52.48,
+    "temp_min": 51.13,
+    "temp_max": 55.42,
+    "pressure": 1019,
+    "humidity": 88,
+    "sea_level": 1019,
+    "grnd_level": 1003
+  },
+  "visibility": 10000,
+  "wind": {
+    "speed": 6.91,
+    "deg": 330
+  },
+  "rain": {
+    "1h": 1
+  },
+  "clouds": {
+    "all": 100
+  },
+  "dt": 1760386698,
+  "sys": {
+    "type": 2,
+    "id": 2103068,
+    "country": "US",
+    "sunrise": 1760353539,
+    "sunset": 1760393751
+  },
+  "timezone": -14400,
+  "id": 5141502,
+  "name": "Troy",
+  "cod": 200
+}
