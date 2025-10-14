@@ -26,4 +26,4 @@ https://www.geeksforgeeks.org/javascript/javascript-program-to-capitalize-the-fi
 https://www.w3schools.com/js/js_functions.asp \
 https://www.w3schools.com/js/js_type_conversion.asp \
 https://www.youtube.com/watch?v=37vxWr0WgQk \
-https://www.color4bg.com/en/generator/pastel-gradient-background? \
+https://www.color4bg.com/en/generator/pastel-gradient-background?
