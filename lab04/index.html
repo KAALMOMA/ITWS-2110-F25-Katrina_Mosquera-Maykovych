@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Troy, NY Weather + Moon Phase</title>
+  <style>
+    body {
+      font-family: "Segoe UI", Arial, sans-serif;
+      color: #333;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+      overflow: hidden;
+      transition: background 0.8s ease;
+    }
+
+    h1 {
+      font-size: 2rem;
+      margin-bottom: 40px;
+      transition: color 0.5s ease;
+    }
+
+    .weather-row {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 25px;
+      flex-wrap: nowrap;
+    }
+
+    .weather-card {
+      width: 160px;
+      aspect-ratio: 1 / 1;
+      border-radius: 20px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      text-align: center;
+      padding: 20px;
+      transition: all 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background-color: rgba(255, 255, 255, 0.9);
+    }
+
+    .weather-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);
+    }
+
+    .card-title {
+      font-weight: bold;
+      font-size: 1.1rem;
+      margin-bottom: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      transition: color 0.5s ease;
+    }
+
+    .card-emoji {
+      font-size: 2.5rem;
+      margin-bottom: 8px;
+    }
+
+    .card-value {
+      font-size: 1.1rem;
+      max-width: 90%;
+    }
+
+    #refresh {
+      margin-top: 40px;
+      padding: 10px 25px;
+      border: none;
+      color: black; /* Updated to black */
+      font-size: 1rem;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    #refresh:hover {
+      filter: brightness(1.1);
+    }
+
+    @media (max-width: 1000px) {
+      .weather-row {
+        flex-wrap: wrap;
+      }
+    }
+  </style>
+</head>
+<body>
+  <h1>Weather in Troy, NY</h1>
+
+  <div class="weather-row">
+    <div class="weather-card">
+      <div class="card-title" id="title-weather">Weather</div>
+      <div class="card-emoji" id="weather-emoji">☀️</div>
+      <div class="card-value" id="condition">Loading...</div>
+    </div>
+
+    <div class="weather-card">
+      <div class="card-title" id="title-wind">Wind</div>
+      <img id="wind-icon" src="" alt="Wind Direction" style="width:60px;height:60px;margin-bottom:5px;">
+      <div class="card-value" id="wind">-- mph (--)</div>
+    </div>
+
+    <div class="weather-card">
+      <div class="card-title" id="title-temp">Temperature</div>
+      <div class="card-value" id="temp">-- °F</div>
+    </div>
+
+    <div class="weather-card">
+      <div class="card-title" id="title-humidity">Humidity</div>
+      <div class="card-value" id="humidity">-- %</div>
+    </div>
+
+    <div class="weather-card">
+      <div class="card-title" id="title-moon">Moon Phase</div>
+      <div class="card-emoji" id="moon-emoji">🌑</div>
+      <div class="card-value" id="moonphase">--</div>
+    </div>
+  </div>
+
+  <button id="refresh">Refresh</button>
+
+  <script>
+    const owmKey = "4063b128d8e4f4940b7e3825e47f38d4";
+    const vcKey = "78TL93DR6FF3D2RXWPMJMQ4XW";
+    const lat = 42.7284;
+    const lon = -73.6918;
+
+    // Convert deg to cardinal (16-point compass)
+    function degToCardinal(deg) {
+      const dirs = ["N","NNE","NE","ENE","E","ESE","SE","SSE","S","SSW","SW","WSW","W","WNW","NW","NNW"];
+      return dirs[Math.round(deg / 22.5) % 16];
+    }
+
+    // Map cardinal to wind icon filename
+    function getWindIcon(cardinal) {
+      if (["N"].includes(cardinal)) return "N.png";
+      if (["S"].includes(cardinal)) return "S.png";
+      if (["E"].includes(cardinal)) return "E.png";
+      if (["W"].includes(cardinal)) return "W.png";
+      if (["NNE","NE","ENE"].includes(cardinal)) return "NE.png";
+      if (["SSE","SE","ESE"].includes(cardinal)) return "SE.png";
+      if (["NNW","NW","WNW"].includes(cardinal)) return "NW.png";
+      if (["SSW","SW","WSW"].includes(cardinal)) return "SW.png";
+      return "";
+    }
+
+    // Weather Emojis
+    function getWeatherEmoji(desc) {
+      desc = desc.toLowerCase();
+      if (desc.includes("clear")) return "☀️";
+      if (desc.includes("cloud")) return "☁️";
+      if (desc.includes("rain")) return "🌧️";
+      if (desc.includes("thunder")) return "⛈️";
+      if (desc.includes("snow")) return "❄️";
+      if (desc.includes("mist") || desc.includes("fog") || desc.includes("haze")) return "🌫️";
+      return "🌤️";
+    }
+
+    // Moon Phase Emojis
+    function getMoonPhaseDetails(value) {
+      if (value === 0 || value === 1) return { name: "New Moon", emoji: "🌑" };
+      else if (value < 0.25) return { name: "Waxing Crescent", emoji: "🌒" };
+      else if (value === 0.25) return { name: "First Quarter", emoji: "🌓" };
+      else if (value < 0.5) return { name: "Waxing Gibbous", emoji: "🌔" };
+      else if (value === 0.5) return { name: "Full Moon", emoji: "🌕" };
+      else if (value < 0.75) return { name: "Waning Gibbous", emoji: "🌖" };
+      else if (value === 0.75) return { name: "Last Quarter", emoji: "🌗" };
+      else return { name: "Waning Crescent", emoji: "🌘" };
+    }
+
+    // Lighten color toward white for contrast
+    function lightenColor(rgb, amount = 0.35) {
+      return rgb.map(c => Math.min(255, Math.round(c + (255 - c) * amount)));
+    }
+
+    function rgbToHex(rgb) {
+      return "#" + rgb.map(x => x.toString(16).padStart(2, "0")).join("");
+    }
+
+    // Random fallback palette
+    function randomFallbackPalette() {
+      const colors = [];
+      for (let i = 0; i < 5; i++) {
+        const r = 150 + Math.floor(Math.random() * 100);
+        const g = 150 + Math.floor(Math.random() * 100);
+        const b = 150 + Math.floor(Math.random() * 100);
+        colors.push([r, g, b]);
+      }
+      return colors;
+    }
+
+    // Fetch Colormind palette via HTTPS proxy
+    function getColorPalette() {
+      return new Promise((resolve, reject) => {
+        const xhr = new XMLHttpRequest();
+        const proxyURL =
+          "https://corsproxy.io/?" + encodeURIComponent("http://colormind.io/api/");
+        xhr.open("POST", proxyURL, true);
+        xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+        xhr.onload = function () {
+          if (xhr.status === 200) {
+            const data = JSON.parse(xhr.responseText);
+            if (data.result) {
+              const lightened = data.result.map(c => lightenColor(c, 0.4));
+              resolve(lightened);
+            } else reject("No palette found");
+          } else reject("Colormind API error");
+        };
+        xhr.onerror = () => reject("Network error");
+        xhr.send(JSON.stringify({ model: "default" }));
+      });
+    }
+
+    function applyPalette(colors) {
+      const hex = colors.map(rgbToHex);
+      document.body.style.background = `linear-gradient(to bottom right, ${hex[0]}, ${hex[1]})`;
+      const cards = document.querySelectorAll(".weather-card");
+      cards.forEach((card, i) => {
+        card.style.backgroundColor = hex[i % hex.length];
+        card.style.color = "#000";
+      });
+      document.querySelector("h1").style.color = hex[2];
+      document.getElementById("refresh").style.backgroundColor = hex[4];
+    }
+
+    // Fetch weather
+    function getWeather() {
+      const url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${owmKey}&units=imperial`;
+      const xhr = new XMLHttpRequest();
+      xhr.open("GET", url, true);
+      xhr.onload = function () {
+        if (xhr.status === 200) {
+          const data = JSON.parse(xhr.responseText);
+          const desc = data.weather[0].description;
+          document.getElementById("condition").innerText = desc;
+          document.getElementById("weather-emoji").innerText = getWeatherEmoji(desc);
+          document.getElementById("temp").innerText = `${data.main.temp.toFixed(1)} °F`;
+          document.getElementById("humidity").innerText = `${data.main.humidity}%`;
+          const windSpeed = data.wind.speed.toFixed(1);
+          const windDir = degToCardinal(data.wind.deg);
+          document.getElementById("wind").innerText = `${windSpeed} mph (${windDir})`;
+          document.getElementById("wind-icon").src = getWindIcon(windDir);
+        } else {
+          document.getElementById("condition").innerText = "Error loading weather";
+        }
+      };
+      xhr.send();
+    }
+
+    // Fetch moon phase
+    function getMoonPhase() {
+      const url = `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${lat},${lon}/today?unitGroup=us&key=${vcKey}&contentType=json`;
+      const xhr = new XMLHttpRequest();
+      xhr.open("GET", url, true);
+      xhr.onload = function () {
+        if (xhr.status === 200) {
+          const data = JSON.parse(xhr.responseText);
+          if (data.days && data.days.length > 0) {
+            const moon = data.days[0].moonphase;
+            const phase = getMoonPhaseDetails(moon);
+            document.getElementById("moonphase").innerText = phase.name;
+            document.getElementById("moon-emoji").innerText = phase.emoji;
+          } else {
+            document.getElementById("moonphase").innerText = "Unavailable";
+          }
+        } else {
+          document.getElementById("moonphase").innerText = "Error loading data";
+        }
+      };
+      xhr.send();
+    }
+
+    // Refresh all
+    async function refreshAll() {
+      try {
+        const palette = await getColorPalette();
+        applyPalette(palette);
+      } catch (err) {
+        console.warn("Colormind failed, using fallback:", err);
+        applyPalette(randomFallbackPalette());
+      }
+      getWeather();
+      getMoonPhase();
+    }
+
+    document.getElementById("refresh").addEventListener("click", refreshAll);
+    window.onload = refreshAll;
+  </script>
+</body>
+</html>
