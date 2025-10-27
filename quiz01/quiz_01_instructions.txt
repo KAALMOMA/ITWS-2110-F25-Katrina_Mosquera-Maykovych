@@ -1,0 +1,159 @@
+Due Date: 10/28/2025 by 11:59 pm ET on LMS						 
+
+ 
+
+Please follow the instructions given below for each question in each part. Parts 1, 2, and 3 are related. Part 4 contains the written parts of the quiz. Please answer the Part 4 questions in your own words. You are allowed to use your notes, the internet, etc., but make sure you understand what you looked up from the internet and write it in your own words. Make sure you understand it and write it in your own words.  
+
+ 
+
+Part 1: Restaurant Food Menu Website Setup 
+
+Using what we have learned, you are to create a new site for a restaurant’s food menu, following the instructions given below. 
+
+ 
+
+Part 1 - Create the local structure 
+
+ 
+
+You will need to create a folder called “my-restaurant”. Inside this folder, create an HTML page named index.html 
+
+This page will be your food menu site's 'landing page'. 
+
+ 
+
+Your website should be served by a local host.  
+
+Your website should be served at http://my-restaurant on your machine.  
+
+Make sure you structure your folders similarly to the following: 
+
+ 
+
+index.html 
+
+--data 
+
+--resources 
+
+ |__ css 
+
+ |__ js 
+
+ |__ img 
+
+ 
+
+ 
+
+Part 2 - JSON data 
+
+ 	 	 								 
+
+You are to create a JSON  file in your ‘data’ folder with the dishes in your hypothetical restaurant. 
+
+You will be marking a list of your four (4) favorite food dishes. Each entry must include the following information: 
+
+Name of the food dish 
+
+Description of the food item 
+
+Category of the dish (vegetarian, vegan, non-vegetarian) 
+
+Cuisine of the dish (Chinese, Italian, Mexican etc..) 
+
+Image of the food dish (image URL) 
+
+Ingredients in the dish 
+
+Price of the dish 
+
+ 
+
+ 
+
+Part 3 - HTML, CSS, and AJAX: 
+
+ 
+
+Create the index.html to represent the restaurant menu data you created. Think about the semantic correctness of the elements you're using, keeping in mind that your document might not always be rendered by a browser. 
+
+ 
+
+Upon serving the index.html file, you will read the data file using AJAX to display the food menu of your restaurant. Please use CSS to make your menu visually appealing. 
+
+At least, you should have the menu data displayed in a table. 
+
+ 
+
+Summary 
+
+You are going to build a website for a restaurant. 
+
+You will create a JSON file with restaurant food items. 
+
+The web page will render that data. 
+
+There must be a README file included that explains any choices you made or observations you would like considered for this quiz. 
+
+ 
+
+ 
+
+Part 4 Written Questions (50 points) 
+
+Copy these five questions into a new Word document and answer them in long-form. 
+
+ 
+
+Describe how HTML fits into the broader ecosystem of a website. Contrast the fundamental role of HTML with the primary roles of CSS and JavaScript. (5 points) 
+
+ 
+
+Explain the difference between HTML structure and HTML semantics. Why is writing semantic HTML considered a best practice? Provide one example of a semantic HTML element and one example of a non-semantic element. (10 points) 
+
+What is the "three-tier model" (also known as three-tier architecture) in web systems? Briefly describe the function and responsibility of each of the three tiers. (15 points) 
+
+Explain what is meant by a Universal Interface in a REST API. (5 points) 
+
+ Explain how your browser chooses which CSS rule to apply to a tag in the case where there are multiple rules that could apply. (15 points) 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+Submission 
+
+Zip up your Quiz1 folder. Include all your code files and the written part of the quiz in one folder and name it using the following naming convention. 
+
+Rename it to quiz1-yourname-yourRCSID.zip. Submit it to LMS. 
+
+ 
+
+Rubric/Grading 
+
+Part 1-setup    			  25 Points 
+
+Part 2 - JSON data 			  10 Points 
+
+Part 3 - HTML, CSS and AJAX 	          40 Points 
+
+Website Readme		                  10 Points 
+
+Overall Code Quality			  15 Points 
+
+Part 4 - Written Questions                50 Points 
+
+ 
+
+Total 					  150 Points 
