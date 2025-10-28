@@ -76,23 +76,23 @@
 
  
 
-??? Create the index.html to represent the restaurant menu data you created. Think about the semantic correctness of the elements you're using, keeping in mind that your document might not always be rendered by a browser. 
+### Create the index.html to represent the restaurant menu data you created. Think about the semantic correctness of the elements you're using, keeping in mind that your document might not always be rendered by a browser. 
 
  
 
-Upon serving the index.html file, you will read the data file using AJAX to display the food menu of your restaurant. Please use CSS to make your menu visually appealing. 
+### Upon serving the index.html file, you will read the data file using AJAX to display the food menu of your restaurant. Please use CSS to make your menu visually appealing. 
 
-At least, you should have the menu data displayed in a table. 
+### At least, you should have the menu data displayed in a table. 
 
  
 
 Summary 
 
-You are going to build a website for a restaurant. 
+### You are going to build a website for a restaurant. 
 
-You will create a JSON file with restaurant food items. 
+### You will create a JSON file with restaurant food items. 
 
-The web page will render that data. 
+### The web page will render that data. 
 
 There must be a README file included that explains any choices you made or observations you would like considered for this quiz. 
 

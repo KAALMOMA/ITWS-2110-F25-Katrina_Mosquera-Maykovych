@@ -1,22 +1,3 @@
-let data;
-async function fetchDishes() {
-    try {
-        const response = await fetch("/quiz01/my-restaurant/data/dishes.json")
-        if(!response.ok) {
-            throw new Error("Could not fetch resource!");
-        }
-
-        data = await response.json();
-        document.dispatchEvent(new CustomEvent("DishesReady", {detail: data}));
-    }
-
-    catch(error) {
-        console.error(error);
-    }
-}
-
-fetchDishes()
-
 document.addEventListener("DishesReady", (event) => {
     let result = "<tr><th id=\"openRound\">Dish</th><th>Description</th><th>Category</th><th>Cuisine</th><th>Ingredients</th><th id=\"closeRound\">Price (USD)</th></tr>";
     for (let i = 0; i < data.dishes.length; ++i)
