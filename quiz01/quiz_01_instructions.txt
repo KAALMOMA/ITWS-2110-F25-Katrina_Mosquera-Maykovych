@@ -1,40 +1,40 @@
-Due Date: 10/28/2025 by 11:59 pm ET on LMS						 
+### Due Date: 10/28/2025 by 11:59 pm ET on LMS						 
 
  
 
-Please follow the instructions given below for each question in each part. Parts 1, 2, and 3 are related. Part 4 contains the written parts of the quiz. Please answer the Part 4 questions in your own words. You are allowed to use your notes, the internet, etc., but make sure you understand what you looked up from the internet and write it in your own words. Make sure you understand it and write it in your own words.  
+### Please follow the instructions given below for each question in each part. Parts 1, 2, and 3 are related. Part 4 contains the written parts of the quiz. Please answer the Part 4 questions in your own words. You are allowed to use your notes, the internet, etc., but make sure you understand what you looked up from the internet and write it in your own words. Make sure you understand it and write it in your own words.  
 
  
 
-Part 1: Restaurant Food Menu Website Setup 
+### Part 1: Restaurant Food Menu Website Setup 
 
-Using what we have learned, you are to create a new site for a restaurant’s food menu, following the instructions given below. 
-
- 
-
-Part 1 - Create the local structure 
+### Using what we have learned, you are to create a new site for a restaurant’s food menu, following the instructions given below. 
 
  
 
-You will need to create a folder called “my-restaurant”. Inside this folder, create an HTML page named index.html 
-
-This page will be your food menu site's 'landing page'. 
+### Part 1 - Create the local structure 
 
  
 
-Your website should be served by a local host.  
+### You will need to create a folder called “my-restaurant”. Inside this folder, create an HTML page named index.html 
 
-Your website should be served at http://my-restaurant on your machine.  
-
-Make sure you structure your folders similarly to the following: 
+### This page will be your food menu site's 'landing page'. 
 
  
 
-index.html 
+### Your website should be served by a local host.  
 
---data 
+??? Your website should be served at http://my-restaurant on your machine.  
 
---resources 
+### Make sure you structure your folders similarly to the following: 
+
+ 
+
+### index.html 
+
+### --data 
+
+### --resources 
 
  |__ css 
 
@@ -46,37 +46,37 @@ index.html
 
  
 
-Part 2 - JSON data 
+### Part 2 - JSON data 
 
  	 	 								 
 
-You are to create a JSON  file in your ‘data’ folder with the dishes in your hypothetical restaurant. 
+### You are to create a JSON file in your ‘data’ folder with the dishes in your hypothetical restaurant. 
 
-You will be marking a list of your four (4) favorite food dishes. Each entry must include the following information: 
+### You will be marking a list of your four (4) favorite food dishes. Each entry must include the following information: 
 
-Name of the food dish 
+### Name of the food dish 
 
-Description of the food item 
+### Description of the food item 
 
-Category of the dish (vegetarian, vegan, non-vegetarian) 
+### Category of the dish (vegetarian, vegan, non-vegetarian) 
 
-Cuisine of the dish (Chinese, Italian, Mexican etc..) 
+### Cuisine of the dish (Chinese, Italian, Mexican etc..) 
 
-Image of the food dish (image URL) 
+### Image of the food dish (image URL) 
 
-Ingredients in the dish 
+### Ingredients in the dish 
 
-Price of the dish 
-
- 
+### Price of the dish 
 
  
 
-Part 3 - HTML, CSS, and AJAX: 
+ 
+
+### Part 3 - HTML, CSS, and AJAX: 
 
  
 
-Create the index.html to represent the restaurant menu data you created. Think about the semantic correctness of the elements you're using, keeping in mind that your document might not always be rendered by a browser. 
+??? Create the index.html to represent the restaurant menu data you created. Think about the semantic correctness of the elements you're using, keeping in mind that your document might not always be rendered by a browser. 
 
  
 
