@@ -1,11 +1,32 @@
 body {
     padding: 0 40px 40px 40px;
     background-color: rgb(218, 188, 220);
-    font-family: "Poiret One", sans-serif;
-  font-weight: 400;
-  font-style: normal;
-  font-weight: 700;
+    font-family: "Fuzzy Bubbles", sans-serif;
+    font-weight: 400;
+    font-style: normal;
     text-align: center;
     color: rgb(51, 32, 32);
-    font-size: 36px;
+    font-size: 30px;
+}
+
+table {
+            width: 75%;
+            border-collapse: collapse;
+            margin: auto;
+        }
+        th, td {
+            border: 0px dashed #000;
+            padding: 10px 20px 10px 20px;
+            text-align: center;
+        }
+        th {
+            background-color: #d19fc7;
+        }
+
+.dish {
+  color: red;
+}
+
+img {
+  border: 3px dashed #000;
 }

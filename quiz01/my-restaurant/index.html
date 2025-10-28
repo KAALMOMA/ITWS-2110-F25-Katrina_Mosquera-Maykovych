@@ -5,12 +5,34 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kat's Gourmet | Home</title>
     <link rel="stylesheet" type="text/css" href="/quiz01/my-restaurant/resources/styles.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Delius&family=Poiret+One&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fuzzy+Bubbles:wght@400;700&family=Lora:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
+    <script src="/quiz01/my-restaurant/resources/GridArrayBg.min.js"></script>
 </head>
 <body>
+    <div id="box">
     <h1>Kat's Gourmet</h1>
-    <p>Welcome to Kat's Gourmet! Our menu features a number of dishes from a variety of different cuisines. With fresh ingredients sourced locally, and skilled chefs from all over the world, we guarantee that each of our dishes will leave you satisfied, and perhaps hungry for more.</p>
+    <p>Welcome to Kat's Gourmet! Our menu features a number of dishes from a variety of different cuisines. With fresh ingredients sourced locally, and skilled chefs from all over the world, we guarantee that each of our dishes will not only leave you satisfied, but hungry for more.</p>
+    <h2>Our Menu</h2>
+    <table id="menu-items">
+        <tr>
+            <th>Dish</th>
+            <th>Description</th>
+            <th>Category</th>
+            <th>Cuisine</th>
+            <th>Ingredients</th>
+            <th>Price (USD)</th>
+        </tr>
+    </table>
+    <script src="/quiz01/my-restaurant/resources/util.js"></script>
+    </box>
+    <script>
+    let colorbg = new Color4Bg.GridArrayBg({
+        dom: "box",
+        colors: ["#e4dbd3","#bfc7df","#c2b9d4","#f1eadf","#d6b2e6","#c6b3f5"],
+        loop: true
+    })
+    </script>
 </body>
 </html>
