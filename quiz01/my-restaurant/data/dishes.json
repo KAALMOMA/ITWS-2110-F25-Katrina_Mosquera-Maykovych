@@ -5,7 +5,7 @@
             "description": "A delicious lightly-baked Salmon, drizzled in a marinade of soy sauce, honey, ginger, and garlic.",
             "category": "Non-Vegetarian",
             "cuisine": "American",
-            "image": "/quiz01/my-restaurant/resources/honey-soy-glazed-salmon.png",
+            "image": "resources/honey-soy-glazed-salmon.png",
             "ingredients": ["Salmon", "Garlic", "Ginger","Honey","Soy Sauce"],
             "price": "19.99"
         },
@@ -14,7 +14,7 @@
             "description": "A hearty curry made with chickpeas simmered in a blend of tomatoes, onions, garlic, and warm Indian spices.",
             "category": "Vegan",
             "cuisine": "Indian",
-            "image": "/quiz01/my-restaurant/resources/spicy-chickpea-curry.png",
+            "image": "resources/spicy-chickpea-curry.png",
             "ingredients": ["Chickpeas", "Tomatoes", "Onions", "Garlic", "Garam Masala", "Cumin"],
             "price": "13.49"
         },
@@ -23,7 +23,7 @@
             "description": "Chicken breasts marinated in a zesty blend of lemon juice, olive oil, garlic, and fresh herbs, and grilled.",
             "category": "Non-Vegetarian",
             "cuisine": "Mediterranean",
-            "image": "/quiz01/my-restaurant/resources/lemon-herb-grilled-chicken.png",
+            "image": "resources/lemon-herb-grilled-chicken.png",
             "ingredients": ["Chicken Breast", "Lemon Juice", "Olive Oil", "Garlic", "Rosemary", "Thyme"],
             "price": "17.99"
         },
@@ -32,7 +32,7 @@
             "description": "A creamy Italian risotto made with arborio rice, fresh mushrooms, parmesan cheese, and a hint of white wine.",
             "category": "Vegetarian",
             "cuisine": "Italian",
-            "image": "/quiz01/my-restaurant/resources/creamy-mushroom-risotto.png",
+            "image": "resources/creamy-mushroom-risotto.png",
             "ingredients": ["Arborio Rice", "Mushrooms", "Parmesan Cheese", "Onions", "White Wine", "Butter"],
             "price": "16.25"
         }

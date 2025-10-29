@@ -9,7 +9,7 @@ body {
     font-size: 20px;
 }
 
-h1, h2, h3, #emphasis {
+h1, h2, h3, .emphasis {
   color: rgb(96, 61, 152);
 }
 
@@ -60,5 +60,5 @@ table {
     position: fixed;
     top: 0;
     left: 0;
-    z-index: -1; /* stays behind your content */
+    z-index: -1;
   }
