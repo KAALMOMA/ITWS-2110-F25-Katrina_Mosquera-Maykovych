@@ -94,15 +94,15 @@ Summary
 
 ### The web page will render that data. 
 
-There must be a README file included that explains any choices you made or observations you would like considered for this quiz. 
+### There must be a README file included that explains any choices you made or observations you would like considered for this quiz. 
 
  
 
  
 
-Part 4 Written Questions (50 points) 
+### Part 4 Written Questions (50 points) 
 
-Copy these five questions into a new Word document and answer them in long-form. 
+### Copy these five questions into a new Word document and answer them in long-form. 
 
  
 
