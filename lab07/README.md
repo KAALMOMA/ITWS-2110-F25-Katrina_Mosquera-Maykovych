@@ -10,8 +10,8 @@ During lab7, I completed the following tasks:
 * Added two lines of code at the top of the database file to create the lab7 database if it doesn't already exist (this makes importing `lab7.sql` into phpmyadmin quicker for my teammates)
 
 ## Resources / Citations:
-https://www.w3schools.com/mysql/mysql_create_table.asp\
-https://www.w3schools.com/mysql/mysql_alter.asp\
-https://www.w3schools.com/mysql/mysql_default.asp\
-https://www.w3schools.com/mysql/mysql_notnull.asp\
+https://www.w3schools.com/mysql/mysql_create_table.asp \
+https://www.w3schools.com/mysql/mysql_alter.asp \
+https://www.w3schools.com/mysql/mysql_default.asp \
+https://www.w3schools.com/mysql/mysql_notnull.asp \
 https://www.w3schools.com/sql/sql_ref_drop_column.asp
